@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap');
+
+$blackColor:#434343;
+$secondaryColor:#fbfbfb;
+
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 600px;
+
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin: auto;
+    overflow: hidden;
+}
+
+.background{
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+
+    .data_box {
+        width: 85%;
+        height: 80%;
+        position: relative;
+        overflow: hidden;
+ 
+
+        &.flex_view {
+            display: flex;
+            flex-direction:row-reverse;
+        }
+
+        .section {
+            flex: 1;
+            overflow: hidden;
+            padding: 0rem 1rem;
+            flex-direction: row-reverse;
+            display: flex;
+        }
+
+        @media only screen and (max-width: $breakpoint-tablet) {
+            height: 95%;
+            width: 95%;
+            &.flex_view {
+                display: flex;
+                flex-direction:column;
+            }
+
+            .section {
+                flex-direction: column;
+                display: flex;
+                padding: 0px 1rem;
+            }
+        }
+
+        @media only screen and (max-width: $breakpoint-mobile) {
+            width: 100%;
+            height: 100%;
+            .section {
+                padding: 0px 0rem;
+            }
+        }
+    }
+}
+
+.navigation {
+    display: flex;
+    margin: 0rem;
+    justify-content: space-between;
+    background: $secondaryColor;
+    padding: 1.5rem 1rem;
+    width: 3rem;
+    flex-direction: column;
+    height: calc(70% - 3rem);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    .item {
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        color: $blackColor;
+        font-weight: 300;
+        font-size: 0.9rem;
+
+        &:hover {
+            color: #00b123;
+        }
+
+        &.active {
+            color: #00b123;
+        }
+
+        p {
+            margin: 0.25rem;
+        }
+
+        &:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 100%;
+            height: 0.1rem;
+            bottom: 0;
+            top: auto;
+            background: radial-gradient(ellipse at top, #dddddd 0%, rgba(255, 255, 255, 0) 70%);
+        }
+    }
+
+    @media only screen and (max-width: $breakpoint-tablet) {
+        flex-direction: row;
+        width: 100%;
+        height: auto;
+        top: auto;
+        transform:translateY(0%);
+        padding: 0.5rem 1rem;
+
+        .item {
+            height: auto;
+            font-size: 1rem;
+
+            &:not(:last-child)::after {
+                top: 0;
+                width: 0.1rem;
+                height: 100%;
+                bottom: auto;
+            }
+        }
+    }
+
+    @media only screen and (max-width: $breakpoint-mobile) {
+        padding: 0.5rem 0rem;
+        .item {
+            font-size: 0.75rem;
+        }
+    }
+    
+}
+
+.personal_section {
+    box-shadow: rgba(0, 0, 0, 0.25) 1px -1px 5px;
+    display: flex;
+    background: $secondaryColor;
+    align-items: center;
+    height: 95%;
+    width: 35%;
+    margin: auto;
+    padding: 0rem 2rem;
+    position: relative;
+
+    .title {
+        flex:1;
+        display: block;
+
+        .name_title {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+        }
+        .designation_title{
+            font-size: 1rem;
+            font-weight: 200;
+            letter-spacing: 0.1rem;
+        }
+    }
+
+    .contact {
+        flex: 1;
+        display: flex;
+        align-items: flex-end;
+        // justify-content: flex-end;
+        flex-direction: column;
+        .social{
+            flex: 1;
+            i{
+                font-size: 1.5rem;
+                letter-spacing: 1.25rem;
+                cursor: pointer;
+            }
+        }
+        .btn{
+            background: $blackColor;
+            color: $secondaryColor;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            font-weight: 300;
+            letter-spacing: 0.1rem;
+            cursor: pointer;
+        }
+    }
+
+    @media only screen and (max-width: $breakpoint-tablet) {
+        box-shadow: rgba(0, 0, 0, 0.1) -1px -1px 5px;
+        width: calc(100% - 4rem);
+        height: 6rem;
+        .title {
+            .name_title {
+                font-size: 1.5rem;
+            }
+            .designation_title{
+                font-size: 0.85rem;
+            }
+        }
+        .contact {
+            .social{
+                i{
+                    font-size: 1.25rem;
+                    letter-spacing: 0.75rem;
+                }
+            }
+            .btn{
+                margin-top: 0.5rem;
+                font-size: 0.75rem;
+            }
+        }
+    }
+
+    @media only screen and (max-width: $breakpoint-mobile) {
+        width: calc(100% - 1rem) ;
+        padding: 0.5rem 0.5rem;
+
+        .contact {
+            .btn{
+                display: none;
+            }
+        }
+    }
+}
+
+.detail_section {
+    height: 90%;
+    position: relative;
+    top:5%;
+    width: 65%;
+    left: -0.25rem;
+    overflow: hidden;
+
+    .about_us,.work,.skill,.contact,.freelance {
+        background: $secondaryColor;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        box-shadow: rgba(0 ,0 ,0 ,0.1) 1px -1px 2.5px;
+        z-index: 0;
+        left: auto;
+        position: absolute;
+
+    }
+
+    .data {
+        padding: 1rem 2rem 1rem; 
+        width: calc(100% - 4rem);
+        height: calc(100% - 2rem);
+        overflow-y: auto;
+    }
+
+    @media only screen and (max-width: $breakpoint-tablet) {
+        width: 100%;
+        height: calc(100% - 8rem);
+        top: 1.5rem;
+        left: auto;
+
+        .about_us,.work,.skill,.contact,.freelance {
+            width: 95%;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.5px;
+        }
+
+        .data {
+            padding: 2rem 2rem 2rem; 
+            height: calc(100% - 4.5rem);
+        }
+    }
+
+    @media only screen and (max-width: $breakpoint-mobile) {
+        left: auto;
+        // .about_us,.work,.skill,.contact,.freelance {
+        //     // left: 2.5%;
+        // }
+        .data {
+            width: calc(100% - 4rem);
+            height: calc(100% - 2.5rem);
+            padding: 1rem 2rem; 
+        }
+    }
+
+}
+
+.hidden {
+    display: none;
+}
+
+.animation {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+.fadeIn {
+    animation-name: fadeInLeft;
+
+    @media only screen and (max-width: $breakpoint-tablet) {
+        animation-name: fadeInUp;
+    }
+}
+.fadeOut {
+        animation-name: fadeOutLeft;
+
+        @media only screen and (max-width: $breakpoint-tablet) {
+            animation-name: fadeOutUp;
+        }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        // -webkit-transform: translate3d(-90%, 0%, 0);
+        transform: translate3d(-55%, 0%, 0);
+    }
+  
+    to {
+        opacity: 1;
+        // -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeOutLeft {
+    from {
+        opacity: 1;
+        // -webkit-transform: translate3d(0, 0%, 0);
+        transform: translate3d(0, 0%, 0);
+    }
+  
+    to {
+        opacity: 0;
+        // -webkit-transform: translate3d(-90%, 0%, 0);
+        transform: translate3d(-90%, 0%, 0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(-50%, 60%, 0px);
+    }
+  
+    to {
+        opacity: 1;
+        transform: translate3d(-50%, 0%, 0);
+    }
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+        transform: translate3d(-50%, 0%, 0px);
+    }
+  
+    to {
+        opacity: 0;
+        transform: translate3d(-50%, 90%, 0px);
+    }
+}
+
+
+        // &::after {
+        //     content: '';
+        //     position: absolute;
+        //     height: 0.08rem;
+        //     background: radial-gradient(ellipse at left, #dddddd 0%, rgba(255, 255, 255, 0) 70%);
+        //     left: 0rem;
+        //     right: -8rem;
+        //     bottom: 0.6rem;
+        //     width: auto
+        // }
