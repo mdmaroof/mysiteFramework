@@ -1,27 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap");
 
-$blackColor:#434343;
-$secondaryColor:#fbfbfb;
+$blackColor: #434343;
+$secondaryColor: #fbfbfb;
 
 $breakpoint-tablet: 768px;
 $breakpoint-mobile: 600px;
 
-
-html, body {
+html,
+body {
     height: 100%;
     width: 100%;
 }
 
-body{
-    font-family: 'IBM Plex Sans', sans-serif;
+body {
+    font-family: "IBM Plex Sans", sans-serif;
     margin: auto;
     overflow: hidden;
 }
 
-.background{
+.background {
     display: flex;
     align-items: center;
-    justify-content: center;  
+    justify-content: center;
     width: 100%;
     height: 100%;
     background-color: aqua;
@@ -31,11 +31,10 @@ body{
         height: 80%;
         position: relative;
         overflow: hidden;
- 
 
         &.flex_view {
             display: flex;
-            flex-direction:row-reverse;
+            flex-direction: row-reverse;
         }
 
         .section {
@@ -49,9 +48,10 @@ body{
         @media only screen and (max-width: $breakpoint-tablet) {
             height: 95%;
             width: 95%;
+
             &.flex_view {
                 display: flex;
-                flex-direction:column;
+                flex-direction: column;
             }
 
             .section {
@@ -64,6 +64,7 @@ body{
         @media only screen and (max-width: $breakpoint-mobile) {
             width: 100%;
             height: 100%;
+
             .section {
                 padding: 0px 0rem;
             }
@@ -83,10 +84,10 @@ body{
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    
+
     .item {
         display: flex;
-        flex-direction:column;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         position: relative;
@@ -110,7 +111,7 @@ body{
         }
 
         &:not(:last-child)::after {
-            content: '';
+            content: "";
             position: absolute;
             right: 0;
             width: 100%;
@@ -126,7 +127,7 @@ body{
         width: 100%;
         height: auto;
         top: auto;
-        transform:translateY(0%);
+        transform: translateY(0%);
         padding: 0.5rem 1rem;
 
         .item {
@@ -144,11 +145,11 @@ body{
 
     @media only screen and (max-width: $breakpoint-mobile) {
         padding: 0.5rem 0rem;
+
         .item {
             font-size: 0.75rem;
         }
     }
-    
 }
 
 .personal_section {
@@ -159,46 +160,99 @@ body{
     height: 95%;
     width: 35%;
     margin: auto;
-    padding: 0rem 2rem;
+    padding: 0rem 0rem;
     position: relative;
+    flex-direction: column;
+
+    .imgBlock {
+        height: 50%;
+        position: relative;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.65);
+        }
+
+        .block_left,
+        .block_right {
+            width: 50%;
+            height: 2.5rem;
+            background-color: #fbfbfb;
+            position: absolute;
+            bottom: -1px;
+            // box-shadow: rgb(0 0 0 / 25%) 1px -1px 5px;
+        }
+        .block_left {
+            clip-path: polygon(0 0, 0 100%, 100% 100%, 0% 0%, 100% 0);
+        }
+        .block_right {
+            right: 0px;
+            clip-path: polygon(0 100%, 0 100%, 100% 100%, 100% 100%, 100% 0);
+        }
+    }
 
     .title {
-        flex:1;
+        margin-top: 0.75rem;
+        text-align: center;
         display: block;
 
         .name_title {
-            font-size: 2rem;
+            font-size: 2.25rem;
             margin-bottom: 0.25rem;
         }
-        .designation_title{
+
+        .designation_title {
             font-size: 1rem;
             font-weight: 200;
             letter-spacing: 0.1rem;
         }
     }
 
-    .contact {
-        flex: 1;
+    .social {
+        margin-top: 1rem;
+        margin-bottom: 5rem;
         display: flex;
-        align-items: flex-end;
-        // justify-content: flex-end;
-        flex-direction: column;
-        .social{
-            flex: 1;
-            i{
-                font-size: 1.5rem;
-                letter-spacing: 1.25rem;
-                cursor: pointer;
+        flex-direction: row;
+        text-align: center;
+        gap: 1rem;
+        i {
+            font-size: 1rem;
+            cursor: pointer;
+            transition: ease-in-out 0.25s;
+            &:hover {
+                transform: scale(1.25);
             }
         }
-        .btn{
-            background: $blackColor;
-            color: $secondaryColor;
+    }
+
+    .contact {
+        display: flex;
+        margin-bottom: 1rem;
+        width: 100%;
+        flex: 1;
+        align-items: end;
+        justify-content: end;
+
+        .btn {
+            background: transparent;
+            color: $blackColor;
             margin-top: 1rem;
             padding: 0.5rem 1rem;
             font-weight: 300;
             letter-spacing: 0.1rem;
+            transition: ease-in-out 0.25s;
             cursor: pointer;
+
+            &:hover {
+                transform: scale(1.2);
+            }
         }
     }
 
@@ -206,22 +260,26 @@ body{
         box-shadow: rgba(0, 0, 0, 0.1) -1px -1px 5px;
         width: calc(100% - 4rem);
         height: 6rem;
+
+        .imgBlock {
+            display: none;
+        }
+
         .title {
             .name_title {
                 font-size: 1.5rem;
             }
-            .designation_title{
+
+            .designation_title {
                 font-size: 0.85rem;
             }
         }
+
+        .social {
+            //
+        }
         .contact {
-            .social{
-                i{
-                    font-size: 1.25rem;
-                    letter-spacing: 0.75rem;
-                }
-            }
-            .btn{
+            .btn {
                 margin-top: 0.5rem;
                 font-size: 0.75rem;
             }
@@ -229,11 +287,11 @@ body{
     }
 
     @media only screen and (max-width: $breakpoint-mobile) {
-        width: calc(100% - 1rem) ;
+        width: calc(100% - 1rem);
         padding: 0.5rem 0.5rem;
 
         .contact {
-            .btn{
+            .btn {
                 display: none;
             }
         }
@@ -243,26 +301,29 @@ body{
 .detail_section {
     height: 90%;
     position: relative;
-    top:5%;
+    top: 5%;
     width: 65%;
     left: -0.25rem;
     overflow: hidden;
 
-    .about_us,.work,.skill,.contact,.freelance {
+    .about_us,
+    .work,
+    .skill,
+    .contact,
+    .freelance {
         background: $secondaryColor;
         z-index: 1;
         width: 100%;
         height: 100%;
         position: relative;
-        box-shadow: rgba(0 ,0 ,0 ,0.1) 1px -1px 2.5px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px -1px 2.5px;
         z-index: 0;
         left: auto;
         position: absolute;
-
     }
 
     .data {
-        padding: 1rem 2rem 1rem; 
+        padding: 1rem 2rem 1rem;
         width: calc(100% - 4rem);
         height: calc(100% - 2rem);
         overflow-y: auto;
@@ -274,7 +335,11 @@ body{
         top: 1.5rem;
         left: auto;
 
-        .about_us,.work,.skill,.contact,.freelance {
+        .about_us,
+        .work,
+        .skill,
+        .contact,
+        .freelance {
             width: 95%;
             height: 100%;
             left: 50%;
@@ -283,23 +348,23 @@ body{
         }
 
         .data {
-            padding: 2rem 2rem 2rem; 
+            padding: 2rem 2rem 2rem;
             height: calc(100% - 4.5rem);
         }
     }
 
     @media only screen and (max-width: $breakpoint-mobile) {
         left: auto;
+
         // .about_us,.work,.skill,.contact,.freelance {
         //     // left: 2.5%;
         // }
         .data {
             width: calc(100% - 4rem);
             height: calc(100% - 2.5rem);
-            padding: 1rem 2rem; 
+            padding: 1rem 2rem;
         }
     }
-
 }
 
 .hidden {
@@ -310,6 +375,7 @@ body{
     animation-duration: 1s;
     animation-fill-mode: both;
 }
+
 .fadeIn {
     animation-name: fadeInLeft;
 
@@ -317,12 +383,13 @@ body{
         animation-name: fadeInUp;
     }
 }
-.fadeOut {
-        animation-name: fadeOutLeft;
 
-        @media only screen and (max-width: $breakpoint-tablet) {
-            animation-name: fadeOutUp;
-        }
+.fadeOut {
+    animation-name: fadeOutLeft;
+
+    @media only screen and (max-width: $breakpoint-tablet) {
+        animation-name: fadeOutUp;
+    }
 }
 
 @keyframes fadeInLeft {
@@ -331,7 +398,7 @@ body{
         // -webkit-transform: translate3d(-90%, 0%, 0);
         transform: translate3d(-55%, 0%, 0);
     }
-  
+
     to {
         opacity: 1;
         // -webkit-transform: translate3d(0, 0, 0);
@@ -345,7 +412,7 @@ body{
         // -webkit-transform: translate3d(0, 0%, 0);
         transform: translate3d(0, 0%, 0);
     }
-  
+
     to {
         opacity: 0;
         // -webkit-transform: translate3d(-90%, 0%, 0);
@@ -358,7 +425,7 @@ body{
         opacity: 0;
         transform: translate3d(-50%, 60%, 0px);
     }
-  
+
     to {
         opacity: 1;
         transform: translate3d(-50%, 0%, 0);
@@ -370,21 +437,20 @@ body{
         opacity: 1;
         transform: translate3d(-50%, 0%, 0px);
     }
-  
+
     to {
         opacity: 0;
         transform: translate3d(-50%, 90%, 0px);
     }
 }
 
-
-        // &::after {
-        //     content: '';
-        //     position: absolute;
-        //     height: 0.08rem;
-        //     background: radial-gradient(ellipse at left, #dddddd 0%, rgba(255, 255, 255, 0) 70%);
-        //     left: 0rem;
-        //     right: -8rem;
-        //     bottom: 0.6rem;
-        //     width: auto
-        // }
+// &::after {
+//     content: '';
+//     position: absolute;
+//     height: 0.08rem;
+//     background: radial-gradient(ellipse at left, #dddddd 0%, rgba(255, 255, 255, 0) 70%);
+//     left: 0rem;
+//     right: -8rem;
+//     bottom: 0.6rem;
+//     width: auto
+// }
