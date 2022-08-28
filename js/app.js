@@ -29,7 +29,8 @@ const activeClass = (activeClass, calledBtn) => {
     document.getElementsByClassName(activeClass)[0].classList.remove('fadeOut');
     document.getElementsByClassName(activeClass)[0].classList.add('fadeIn');
     document.getElementById(calledBtn).classList.add('active');
-    setTimeout(() => { document.getElementsByClassName(activeClass)[0].classList.remove('hidden') }, 100)
+    // document.getElementsByClassName(activeClass)[0].classList.remove('hidden')
+    setTimeout(() => { document.getElementsByClassName(activeClass)[0].classList.remove('hidden') }, 15)
 }
 
 const activateFunction = (calledBtn) => {
